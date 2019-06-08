@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Oc6.Maths.Shared;
+using System;
 
-namespace Oc6.Maths
+namespace Oc6.Maths.Integer
 {
     public static class IntegerMath
     {
@@ -47,6 +48,46 @@ namespace Oc6.Maths
         public static ulong Sqrt(ulong input)
         {
             return SqrtInternal(input);
+        }
+
+        public static bool IsPowerOfTwo(sbyte x)
+        {
+            return x > 0 && IsPowerOfTwoInternal((ulong)x);
+        }
+
+        public static bool IsPowerOfTwo(byte x)
+        {
+            return x > 0 && IsPowerOfTwoInternal(x);
+        }
+
+        public static bool IsPowerOfTwo(short x)
+        {
+            return x > 0 && IsPowerOfTwoInternal((ulong)x);
+        }
+
+        public static bool IsPowerOfTwo(ushort x)
+        {
+            return IsPowerOfTwoInternal(x);
+        }
+
+        public static bool IsPowerOfTwo(int x)
+        {
+            return x > 0 && IsPowerOfTwoInternal((ulong)x);
+        }
+
+        public static bool IsPowerOfTwo(uint x)
+        {
+            return IsPowerOfTwoInternal(x);
+        }
+
+        public static bool IsPowerOfTwo(long x)
+        {
+            return x > 0 && IsPowerOfTwoInternal((ulong)x);
+        }
+
+        public static bool IsPowerOfTwo(ulong x)
+        {
+            return IsPowerOfTwoInternal(x);
         }
 
         private static ulong SignedSqrtInternal(long input)
@@ -101,46 +142,6 @@ namespace Oc6.Maths
             }
 
             return t - 1;
-        }
-
-        public static bool IsPowerOfTwo(sbyte x)
-        {
-            return x > 0 && IsPowerOfTwoInternal((ulong)x);
-        }
-
-        public static bool IsPowerOfTwo(byte x)
-        {
-            return x > 0 && IsPowerOfTwoInternal(x);
-        }
-
-        public static bool IsPowerOfTwo(short x)
-        {
-            return x > 0 && IsPowerOfTwoInternal((ulong)x);
-        }
-
-        public static bool IsPowerOfTwo(ushort x)
-        {
-            return IsPowerOfTwoInternal(x);
-        }
-
-        public static bool IsPowerOfTwo(int x)
-        {
-            return x > 0 && IsPowerOfTwoInternal((ulong)x);
-        }
-
-        public static bool IsPowerOfTwo(uint x)
-        {
-            return IsPowerOfTwoInternal(x);
-        }
-
-        public static bool IsPowerOfTwo(long x)
-        {
-            return x > 0 && IsPowerOfTwoInternal((ulong)x);
-        }
-
-        public static bool IsPowerOfTwo(ulong x)
-        {
-            return IsPowerOfTwoInternal(x);
         }
 
         private static bool IsPowerOfTwoInternal(ulong x)

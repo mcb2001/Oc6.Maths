@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Oc6.Maths.Decimal;
 using System;
 
 namespace Oc6.Maths.UnitTests
 {
     [TestClass]
-    public class DecimalMathsTests
+    public sealed class DecimalMathsTests
     {
         [TestMethod]
         public void Pow()

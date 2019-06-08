@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Oc6.Maths.Integer;
 using System;
 
 namespace Oc6.Maths.UnitTests
 {
     [TestClass]
-    public class IntegerMathTests
+    public sealed class IntegerMathTests
     {
         [TestMethod]
         public void Sqrt_Zero_Int()
@@ -179,6 +180,68 @@ namespace Oc6.Maths.UnitTests
         public void Sqrt_Exception_Long()
         {
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => IntegerMath.Sqrt(-1L));
+        }
+
+        [TestMethod]
+        public void IsPowerOfTwo_True_16_Byte()
+        {
+            byte b = 16;
+            Assert.IsTrue(IntegerMath.IsPowerOfTwo(b));
+        }
+
+        [TestMethod]
+        public void IsPowerOfTwo_False_0_Uint()
+        {
+            uint u = 0;
+            Assert.IsFalse(IntegerMath.IsPowerOfTwo(u));
+        }
+
+        [TestMethod]
+        public void IsPowerOfTwo_True_1_Int()
+        {
+            int i = 1;
+            Assert.IsTrue(IntegerMath.IsPowerOfTwo(i));
+        }
+
+        [TestMethod]
+        public void IsPowerOfTwo_False_3_Short()
+        {
+            short s = 3;
+            Assert.IsFalse(IntegerMath.IsPowerOfTwo(s));
+        }
+
+        [TestMethod]
+        public void IsPowerOfTwo_False_127_Sbyte()
+        {
+            sbyte s = 127;
+            Assert.IsFalse(IntegerMath.IsPowerOfTwo(s));
+        }
+
+        [TestMethod]
+        public void IsPowerOfTwo_True_Large_Long()
+        {
+            long l = int.MaxValue;
+            ++l;
+            Assert.IsTrue(IntegerMath.IsPowerOfTwo(l));
+        }
+
+        [TestMethod]
+        public void IsPowerOfTwo_False_MAX_ulong()
+        {
+            ulong u = ulong.MaxValue;
+            Assert.IsFalse(IntegerMath.IsPowerOfTwo(u));
+        }
+
+        [TestMethod]
+        public void IsPowerOfTwo_True_Loop()
+        {
+            ulong u = 1;
+
+            for (int i = 0; i < 64; ++i)
+            {
+                Assert.IsTrue(IntegerMath.IsPowerOfTwo(u));
+                u <<= 1;
+            }
         }
     }
 }

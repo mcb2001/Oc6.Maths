@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Oc6.Maths.Shared;
+using System;
 
-namespace Oc6.Maths
+namespace Oc6.Maths.Decimal
 {
     public static class DecimalMath
     {
@@ -91,8 +92,6 @@ namespace Oc6.Maths
 
                 //swap sign
                 sign = -sign;
-
-                int a = 0; a += a;
             }
 
             return Math.Max(-1.0M, Math.Min(1.0M, sum));
