@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Oc6.Maths.Util;
+using System;
 
-namespace Oc6.Maths
+namespace Oc6.Maths.Numbers
 {
     public static class LoanFunctions
     {

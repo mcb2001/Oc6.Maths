@@ -1,4 +1,4 @@
-﻿namespace Oc6.Maths
+﻿namespace Oc6.Maths.Util
 {
     public enum PaymentType : int
     {

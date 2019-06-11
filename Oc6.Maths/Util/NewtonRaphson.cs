@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-namespace Oc6.Maths
+namespace Oc6.Maths.Util
 {
     public static class NewtonRaphson
     {
@@ -20,7 +20,7 @@ namespace Oc6.Maths
 
                 if (rounding.HasValue)
                 {
-                    x1 = ComplexMath.Round(x1, rounding.Value);
+                    x1 = new Complex(Math.Round(x1.Real, rounding.Value), Math.Round(x1.Imaginary, rounding.Value));
                 }
 
                 if (x0 == x1)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Oc6.Maths
+namespace Oc6.Maths.Util
 {
     public static class IListExtensions
     {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Oc6.Maths.Util;
 using System.Collections.Generic;
 using System.Linq;
 
