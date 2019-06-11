@@ -1,12 +1,35 @@
 ﻿using System;
 
-namespace Oc6.Maths.Shared
+namespace Oc6.Maths
 {
     public static class NewtonRaphson
     {
         public const int DEFAULT_ITERATIONS = 10000;
         public const int DEFAULT_GUESS = 1;
         public const int DEFAULT_ROUNDING = 14;
+
+        public static Complex Iterate(Func<Complex, Complex> fx, Func<Complex, Complex> dydx, Complex? guess = null, int? iterations = DEFAULT_ITERATIONS, int? rounding = DEFAULT_ROUNDING)
+        {
+            Complex x1 = guess ?? DEFAULT_GUESS, x0;
+
+            for (int i = 1; i <= (iterations ?? i); ++i)
+            {
+                x0 = x1;
+                x1 = x0 - (fx(x0) / dydx(x0));
+
+                if (rounding.HasValue)
+                {
+                    x1 = ComplexMath.Round(x1, rounding.Value);
+                }
+
+                if (x0 == x1)
+                {
+                    return x0;
+                }
+            }
+
+            throw new IterationsExceededException<Complex>(x1);
+        }
 
         public static decimal Iterate(Func<decimal, decimal> fx, Func<decimal, decimal> dydx, decimal guess = DEFAULT_GUESS, int? iterations = DEFAULT_ITERATIONS, int? rounding = DEFAULT_ROUNDING)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Oc6.Maths.Shared
+namespace Oc6.Maths
 {
     public class IterationsExceededException<T> : Exception where T : struct
     {

@@ -1,7 +1,6 @@
-﻿using Oc6.Maths.Shared;
-using System;
+﻿using System;
 
-namespace Oc6.Maths.Decimal
+namespace Oc6.Maths
 {
     public static class DecimalMath
     {
@@ -40,36 +39,27 @@ namespace Oc6.Maths.Decimal
 
         public static decimal Sqrt(decimal value)
         {
-            if (value < 0.0M)
+            return Root(value, 2);
+        }
+
+        public static decimal Root(decimal value, int root)
+        {
+            if (IntegerMath.IsPowerOfTwo(root) && value < 0.0M)
             {
-                throw new ArgumentException("Invalid value", nameof(value));
+                throw new ArgumentOutOfRangeException(nameof(value), "must be positive");
             }
             else if (value == 0.0M)
             {
                 return 0.0M;
             }
-            else
+
+            try
             {
-                try
-                {
-                    //f(x) = x^2-value
-                    //f'(x) = 2x
-                    //guess = value/2
-                    //10000 iterations should be enough for precision, while still performing in time
-                    //dont round, instead use exc.LastValue
-                    return NewtonRaphson.Iterate(x => (x * x) - value, x => x + x, value / 2.0M, 10000, null);
-                }
-                catch (IterationsExceededException<decimal> exc)
-                {
-                    if (exc.LastValue > 0.0M)
-                    {
-                        return exc.LastValue;
-                    }
-                    else
-                    {
-                        throw exc;
-                    }
-                }
+                return NewtonRaphson.Iterate(x => Pow(x, root) - value, x => root * Pow(x, root - 1), rounding: null);
+            }
+            catch (IterationsExceededException<decimal> exc)
+            {
+                return exc.LastValue;
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Oc6.Maths.Decimal;
 using System;
 
 namespace Oc6.Maths.UnitTests
@@ -22,6 +21,15 @@ namespace Oc6.Maths.UnitTests
             const decimal expected = 9.0M;
             decimal actual = 81.0M;
             actual = DecimalMath.Sqrt(actual);
+            Assert.AreEqual<decimal>(expected, actual);
+        }
+
+        [TestMethod]
+        public void Root()
+        {
+            const decimal expected = 100.0M;
+            decimal actual = expected * expected * expected;
+            actual = DecimalMath.Root(actual, 3);
             Assert.AreEqual<decimal>(expected, actual);
         }
 

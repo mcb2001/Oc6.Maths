@@ -1,7 +1,6 @@
-﻿using Oc6.Maths.Shared;
-using System;
+﻿using System;
 
-namespace Oc6.Maths.Integer
+namespace Oc6.Maths
 {
     public static class IntegerMath
     {

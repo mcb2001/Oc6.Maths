@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Oc6.Maths.Shared;
 using System;
 
 namespace Oc6.Maths.UnitTests
