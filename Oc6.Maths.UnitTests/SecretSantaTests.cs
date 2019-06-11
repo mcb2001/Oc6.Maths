@@ -11,13 +11,11 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Solve()
         {
-            IList<string> participantNames = Enumerable
-                .Range('a', 'z' - 'a' + 1)
-                .Select(i => string.Join(string.Empty, Enumerable
-                    .Range(0, 4)
+            //["aaaa", "bbbb", ... , "yyyy", "zzzz"]
+            IList<string> participantNames = Enumerable.Range('a', 'z' - 'a' + 1)
+                .Select(i => string.Join(string.Empty, Enumerable.Range(0, 4)
                     .Select(x => (char)i)))
                 .ToArray();
-            //["aaaa", "bbbb", ... , "yyyy", "zzzz"]
 
             IList<SecretSantaParticipant> solution = SecretSanta.Solve(participantNames);
 
