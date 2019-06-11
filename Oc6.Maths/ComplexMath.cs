@@ -29,30 +29,45 @@ namespace Oc6.Maths
 
         public static Complex Sqrt(Complex value)
         {
-            return Root(value, 2);
-        }
+            if (value.Imaginary == 0)
+            {
+                return value.Real < 0
+                    ? new Complex
+                    {
+                        Real = 0,
+                        Imaginary = Math.Sqrt(-value.Real),
+                    }
+                    : new Complex
+                    {
+                        Real = Math.Sqrt(value.Real),
+                        Imaginary = 0,
+                    };
+            }
 
-        public static Complex Root(Complex value, int root)
-        {
-            try
+            double a = value.Real;
+            double b = value.Imaginary;
+
+            double real = Math.Sqrt((a + Math.Sqrt((a * a) + (b * b))) / 2.0);
+            double imaginary = Math.Sign(b) * Math.Sqrt((Math.Sqrt((a * a) + (b * b)) - a) / 2.0);
+
+            return new Complex
             {
-                return NewtonRaphson.Iterate(x => Pow(x, root) - value, x => root * Pow(x, root - 1), rounding: null);
-            }
-            catch (IterationsExceededException<double> exc)
-            {
-                return exc.LastValue;
-            }
+                Real = real,
+                Imaginary = imaginary,
+            };
         }
 
         public static Complex Pow(Complex value, int power)
         {
+            Complex one = 1;
+
             if (power == 0)
             {
-                return 1;
+                return one;
             }
             else if (power < 0)
             {
-                return 1.0 / Pow(value, -power);
+                return one / Pow(value, -power);
             }
             else
             {

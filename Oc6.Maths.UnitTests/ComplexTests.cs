@@ -62,6 +62,25 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
+        public void Square()
+        {
+            var expected = new Complex
+            {
+                Real = 1,
+                Imaginary = 0,
+            };
+
+            var actual = new Complex
+            {
+                Real = 0,
+                Imaginary = 1,
+            };
+
+            actual *= actual;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void Divide()
         {
             var expected = new Complex
@@ -154,13 +173,67 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void ToString_Format_FormatProvider()
+        public void ToString_Format_FormatProvider_Positive()
         {
-            const string expected = "1,200.00 + 7,800.00i";
+            const string expected = "1,200.00+7,800.00i";
             const string format = "N";
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Complex c = A * 1000;
             string actual = c.ToString(format, provider);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToString_Format_FormatProvider_Negative()
+        {
+            const string expected = "1,200.00-7,800.00i";
+            const string format = "N";
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            var c = new Complex
+            {
+                Real = 1200,
+                Imaginary = -7800,
+            };
+            string actual = c.ToString(format, provider);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToString_NaN()
+        {
+            const string expected = "NaN";
+            var c = new Complex
+            {
+                Real = double.NaN,
+                Imaginary = 1,
+            };
+            string actual = c.ToString();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToString_PositiveInfinity()
+        {
+            const string expected = "∞";
+            var c = new Complex
+            {
+                Real = 1,
+                Imaginary = double.PositiveInfinity,
+            };
+            string actual = c.ToString();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToString_NegativeInfinity()
+        {
+            const string expected = "-∞";
+            var c = new Complex
+            {
+                Real = 1,
+                Imaginary = double.NegativeInfinity,
+            };
+            string actual = c.ToString();
             Assert.AreEqual(expected, actual);
         }
 
@@ -170,6 +243,92 @@ namespace Oc6.Maths.UnitTests
             int a = A.GetHashCode();
             int b = B.GetHashCode();
             Assert.AreNotEqual(a, b);
+        }
+
+        [TestMethod]
+        public void Parse_Real()
+        {
+            var expected = new Complex
+            {
+                Real = 1234.56789101112,
+                Imaginary = 0,
+            };
+
+            var actual = Complex.Parse(expected.ToString());
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Parse_Imaginary()
+        {
+            var expected = new Complex
+            {
+                Real = 0,
+                Imaginary = 1234.56789101112,
+            };
+
+            var actual = Complex.Parse(expected.ToString());
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Parse()
+        {
+            var expected = new Complex
+            {
+                Real = -1234.56789101112,
+                Imaginary = 1234.56789101112,
+            };
+
+            var actual = Complex.Parse(expected.ToString());
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TryParse_Real()
+        {
+            var expected = new Complex
+            {
+                Real = 1234.56789101112,
+                Imaginary = 0,
+            };
+
+            Assert.IsTrue(Complex.TryParse(expected.ToString(), out Complex actual));
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TryParse_Imaginary()
+        {
+            var expected = new Complex
+            {
+                Real = 0,
+                Imaginary = 1234.56789101112,
+            };
+
+            Assert.IsTrue(Complex.TryParse(expected.ToString(), out Complex actual));
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TryParse()
+        {
+            var expected = new Complex
+            {
+                Real = -1234.56789101112,
+                Imaginary = 1234.56789101112,
+            };
+
+            Assert.IsTrue(Complex.TryParse(expected.ToString(), out Complex actual));
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TryParse_False()
+        {
+            Complex expected = default;
+            Assert.IsFalse(Complex.TryParse("NOT_A_COMPLEX_NUMBER", out Complex actual));
+            Assert.AreEqual(expected, actual);
         }
     }
 }
