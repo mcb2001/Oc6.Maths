@@ -8,13 +8,13 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Conjugate()
         {
-            var actual = new Complex
+            Complex actual = new Complex
             {
                 Real = 1.2,
                 Imaginary = 7.8,
             };
 
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 1.2,
                 Imaginary = -7.8,
@@ -29,7 +29,7 @@ namespace Oc6.Maths.UnitTests
         {
             double expected = 5.0;
 
-            var complex = new Complex
+            Complex complex = new Complex
             {
                 Real = 3.0,
                 Imaginary = 4.0,
@@ -42,16 +42,16 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Pow()
         {
-            var actual = new Complex
+            Complex actual = new Complex
             {
                 Real = -3.5,
                 Imaginary = 3.5,
             };
 
-            var expected = new Complex
+            Complex expected = new Complex
             {
-                Real = -171.5,
-                Imaginary = 171.5,
+                Real = 85.75,
+                Imaginary = 85.75,
             };
 
             actual = ComplexMath.Pow(actual, 3);
@@ -61,13 +61,13 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Round()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = -172,
                 Imaginary = 172,
             };
 
-            var actual = new Complex
+            Complex actual = new Complex
             {
                 Real = -171.5,
                 Imaginary = 171.5,
@@ -80,13 +80,13 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Sqrt_Real()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 4,
                 Imaginary = 0,
             };
 
-            var actual = new Complex
+            Complex actual = new Complex
             {
                 Real = 16,
                 Imaginary = 0,
@@ -99,13 +99,13 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Sqrt_Imaginary()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 0,
                 Imaginary = 4,
             };
 
-            var actual = new Complex
+            Complex actual = new Complex
             {
                 Real = -16,
                 Imaginary = 0,
@@ -118,13 +118,13 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Sqrt()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 2,
                 Imaginary = 1,
             };
 
-            var actual = new Complex
+            Complex actual = new Complex
             {
                 Real = 3,
                 Imaginary = 4,
@@ -138,19 +138,59 @@ namespace Oc6.Maths.UnitTests
         public void Root_Real()
         {
             //https://en.wikipedia.org/wiki/Complex_number
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 4,
                 Imaginary = 0,
             };
 
-            var actual = new Complex
+            Complex actual = new Complex
             {
-                Real = 16,
+                Real = 4 * 4 * 4,
                 Imaginary = 0,
             };
 
             actual = ComplexMath.Root(actual, 3);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Root()
+        {
+            //https://en.wikipedia.org/wiki/Complex_number
+            Complex expected = new Complex
+            {
+                Real = 1.5399560877219816,
+                Imaginary = 0.47227133305169505,
+            };
+
+            Complex actual = new Complex
+            {
+                Real = 2.5,
+                Imaginary = 6.25,
+            };
+
+            actual = ComplexMath.Root(actual, 4);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Root_Negative()
+        {
+            //https://en.wikipedia.org/wiki/Complex_number
+            Complex expected = new Complex
+            {
+                Real = 0.593545246206821,
+                Imaginary = -0.18202753110139264,
+            };
+
+            Complex actual = new Complex
+            {
+                Real = 2.5,
+                Imaginary = 6.25,
+            };
+
+            actual = ComplexMath.Root(actual, -4);
             Assert.AreEqual(expected, actual);
         }
     }

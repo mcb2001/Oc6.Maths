@@ -4,6 +4,8 @@ namespace Oc6.Maths
 {
     public static class ComplexMath
     {
+        private static readonly Complex ONE = 1;
+
         public static Complex Conjugate(Complex complex)
         {
             return new Complex
@@ -59,6 +61,16 @@ namespace Oc6.Maths
 
         public static Complex Root(Complex value, int root)
         {
+            if (root == 2)
+            {
+                return Sqrt(value);
+            }
+
+            if (root < 0)
+            {
+                return ONE / Root(value, -root);
+            }
+
             try
             {
                 return NewtonRaphson.Iterate(x => Pow(x, root) - value, x => root * Pow(x, root - 1), rounding: null);
@@ -71,15 +83,13 @@ namespace Oc6.Maths
 
         public static Complex Pow(Complex value, int power)
         {
-            Complex one = 1;
-
             if (power == 0)
             {
-                return one;
+                return ONE;
             }
             else if (power < 0)
             {
-                return one / Pow(value, -power);
+                return ONE / Pow(value, -power);
             }
             else
             {

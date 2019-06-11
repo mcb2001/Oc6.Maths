@@ -66,7 +66,7 @@ namespace Oc6.Maths.UnitTests
         {
             var expected = new Complex
             {
-                Real = 1,
+                Real = -1,
                 Imaginary = 0,
             };
 
