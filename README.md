@@ -4,7 +4,8 @@ A couple of interesting ways of extending the possible calculations you can do w
 
 Sprinckled with a few IList extensions, string functions and Perlin noise
 
-##License
+## License
+
 MIT License
 
 Copyright (c) 2019 Marc Barnholdt
