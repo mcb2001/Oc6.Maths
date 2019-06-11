@@ -133,5 +133,24 @@ namespace Oc6.Maths.UnitTests
             actual = ComplexMath.Sqrt(actual);
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Root_Real()
+        {
+            var expected = new Complex
+            {
+                Real = 4,
+                Imaginary = 0,
+            };
+
+            var actual = new Complex
+            {
+                Real = 16,
+                Imaginary = 0,
+            };
+
+            actual = ComplexMath.Root(actual, 3);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

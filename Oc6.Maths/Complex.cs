@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace Oc6.Maths
 {
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public partial struct Complex : IEquatable<Complex>, IFormattable
     {
         public const string IMAGINARY_UNIT = "i";
@@ -41,17 +44,17 @@ namespace Oc6.Maths
 
             return new Complex
             {
-                Real = (x * u) + (y * v),
+                Real = (x * u) - (y * v),
                 Imaginary = (x * v) + (y * u),
             };
         }
 
         public static Complex operator /(Complex a, Complex b)
         {
-            double x = a.Real;
-            double y = a.Imaginary;
-            double u = b.Real;
-            double v = b.Imaginary;
+            double x = b.Real;
+            double y = b.Imaginary;
+            double u = a.Real;
+            double v = a.Imaginary;
 
             return new Complex
             {
@@ -352,32 +355,27 @@ namespace Oc6.Maths
         {
             s = s.Trim().ToUpperInvariant();
 
-            if (s.Contains(PLUS))
+            if (s.Contains(PLUS)) //complex
             {
-                //complex
                 return SplitComplex(s, PLUS);
             }
-            else if (s.Contains(MINUS))
+            else if (s.Contains(MINUS)) //complex
             {
                 return SplitComplex(s, MINUS);
             }
             else
             {
 
-                if (s.Contains(I))
+                if (s.Contains(I)) //imaginary
                 {
-                    //imaginary
-
                     return new ComplexParts
                     {
                         Real = null,
                         Imaginary = s.Replace(I, string.Empty).Trim(),
                     };
                 }
-                else
+                else //real
                 {
-                    //real
-
                     return new ComplexParts
                     {
                         Real = s,

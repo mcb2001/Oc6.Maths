@@ -52,7 +52,7 @@ namespace Oc6.Maths.UnitTests
         {
             var expected = new Complex
             {
-                Real = 18,
+                Real = -25.68,
                 Imaginary = -21.6,
             };
 
@@ -81,15 +81,41 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Divide()
+        public void Divide0()
         {
             var expected = new Complex
             {
-                Real = 0.28901734104046245,
-                Imaginary = 0.45472061657032758,
+                Real = 0.99557522123893794,
+                Imaginary = -1.566371681415929,
             };
 
             Complex actual = A / B;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Divide1()
+        {
+            var expected = new Complex
+            {
+                Real = 9.0 / 58.0,
+                Imaginary = 37.0 / 58.0,
+            };
+
+            var a = new Complex
+            {
+                Real = 3.0,
+                Imaginary = 4.0,
+            };
+
+            var b = new Complex
+            {
+                Real = 7.0,
+                Imaginary = -3.0,
+            };
+
+            Complex actual = a / b;
 
             Assert.AreEqual(expected, actual);
         }

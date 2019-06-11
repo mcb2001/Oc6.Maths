@@ -57,6 +57,18 @@ namespace Oc6.Maths
             };
         }
 
+        public static Complex Root(Complex value, int root)
+        {
+            try
+            {
+                return NewtonRaphson.Iterate(x => Pow(x, root) - value, x => root * Pow(x, root - 1), rounding: null);
+            }
+            catch (IterationsExceededException<Complex> exc)
+            {
+                return exc.LastValue;
+            }
+        }
+
         public static Complex Pow(Complex value, int power)
         {
             Complex one = 1;
