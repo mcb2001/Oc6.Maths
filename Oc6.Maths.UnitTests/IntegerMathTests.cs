@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Numerics;
 
 namespace Oc6.Maths.UnitTests
 {
@@ -140,6 +141,42 @@ namespace Oc6.Maths.UnitTests
         {
             long actual = IntegerMath.Sqrt(16L);
             long expected = 4L;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Sqrt_16_BigInteger()
+        {
+            BigInteger actual = 16;
+            actual = IntegerMath.Sqrt(actual);
+            BigInteger expected = 4;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Sqrt_10_BigInteger()
+        {
+            BigInteger actual = 10;
+            actual = IntegerMath.Sqrt(actual);
+            BigInteger expected = 3;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Sqrt_Large_BigInteger0()
+        {
+            BigInteger actual = long.MaxValue;
+            actual = IntegerMath.Sqrt(actual * actual);
+            BigInteger expected = long.MaxValue;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Sqrt_Large_BigInteger1()
+        {
+            BigInteger actual = long.MaxValue;
+            actual = IntegerMath.Sqrt(actual * actual + 27);
+            BigInteger expected = long.MaxValue;
             Assert.AreEqual(expected, actual);
         }
 

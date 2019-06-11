@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace Oc6.Maths
 {
@@ -75,6 +76,24 @@ namespace Oc6.Maths
             }
 
             throw new IterationsExceededException<double>(x1);
+        }
+
+        public static BigInteger Iterate(Func<BigInteger, BigInteger> fx, Func<BigInteger, BigInteger> dydx, BigInteger? guess = null, int? iterations = DEFAULT_ITERATIONS)
+        {
+            BigInteger x1 = guess ?? 1, x0;
+
+            for (int i = 1; i <= (iterations ?? i); ++i)
+            {
+                x0 = x1;
+                x1 = x0 - (fx(x0) / dydx(x0));
+
+                if (x0 == x1)
+                {
+                    return x0;
+                }
+            }
+
+            throw new IterationsExceededException<BigInteger>(x1);
         }
 
         public static float Iterate(Func<float, float> fx, Func<float, float> dydx, float guess = DEFAULT_GUESS, int? iterations = DEFAULT_ITERATIONS, int? rounding = DEFAULT_ROUNDING)

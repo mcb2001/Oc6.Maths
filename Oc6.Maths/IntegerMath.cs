@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace Oc6.Maths
 {
@@ -47,6 +48,53 @@ namespace Oc6.Maths
         public static ulong Sqrt(ulong input)
         {
             return SqrtInternal(input);
+        }
+
+        public static BigInteger Sqrt(BigInteger input)
+        {
+            if (input < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(input), "Must be non-negative");
+            }
+
+            if (input == 0)
+            {
+                return 0;
+            }
+
+            BigInteger t;
+
+            try
+            {
+                t = NewtonRaphson.Iterate(x => (x * x) - input, x => 2 * x, 2147483648);
+            }
+            catch (IterationsExceededException<BigInteger> exc)
+            {
+                t = exc.LastValue;
+            }
+
+            if (t * t == input)
+            {
+                return t;
+            }
+
+            --t;
+
+            BigInteger prev = t * t;
+
+            while (true)
+            {
+                ++t;
+
+                BigInteger cur = t * t;
+
+                if (cur < prev || cur > input)
+                {
+                    break;
+                }
+            }
+
+            return t - 1;
         }
 
         public static bool IsPowerOfTwo(sbyte x)
@@ -111,7 +159,6 @@ namespace Oc6.Maths
 
             try
             {
-
                 value = NewtonRaphson.Iterate(x => (x * x) - i, x => 2.0 * x, 2147483648);
             }
             catch (IterationsExceededException<double> exc)
