@@ -8,6 +8,50 @@ namespace Oc6.Maths.UnitTests
     public sealed class IntegerMathTests
     {
         [TestMethod]
+        public void GreatestCommonDivisor_Int()
+        {
+            int a = 2 * 3 * 5 * 7;
+            int b = 3 * 5 * 7;
+            int c = 2 * 5 * 7;
+            int expected = 5 * 7;
+            int actual = IntegerMath.GreatestCommonDivisor(a, b, c);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GreatestCommonDivisor_BigInteger()
+        {
+            BigInteger a = 2 * 3 * 5 * 7;
+            BigInteger b = 3 * 5 * 7;
+            BigInteger c = 2 * 5 * 7;
+            BigInteger expected = 5 * 7;
+            BigInteger actual = IntegerMath.GreatestCommonDivisor(a, b, c);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void LeastCommonMultiple_Long()
+        {
+            long a = 2 * 3 * 5 * 7;
+            long b = 3 * 5 * 11;
+            long c = 3 * 5 * 13;
+            long expected = 2 * 3 * 5 * 7 * 11 * 13;
+            long actual = IntegerMath.LeastCommonMultiple(a, b, c);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void LeastCommonMultiple_BigInteger()
+        {
+            BigInteger a = 2 * 3 * 5 * 7;
+            BigInteger b = 3 * 5 * 11;
+            BigInteger c = 3 * 5 * 13;
+            BigInteger expected = 2 * 3 * 5 * 7 * 11 * 13;
+            BigInteger actual = IntegerMath.LeastCommonMultiple(a, b, c);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void Sqrt_Zero_Int()
         {
             int actual = IntegerMath.Sqrt(0);

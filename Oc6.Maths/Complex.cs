@@ -227,7 +227,7 @@ namespace Oc6.Maths
 
         public override bool Equals(object obj)
         {
-            return obj is Complex complex ? Equals(complex) : false;
+            return obj is Complex complex && Equals(complex);
         }
 
         public bool Equals(Complex other)
@@ -340,6 +340,20 @@ namespace Oc6.Maths
             return true;
         }
 
+        public static implicit operator Complex(PolarComplex polar)
+        {
+            return FromPolar(polar);
+        }
+
+        public static Complex FromPolar(PolarComplex polar)
+        {
+            return new Complex
+            {
+                Real = polar.Modulus * Math.Cos(polar.Argument),
+                Imaginary = polar.Modulus * Math.Sin(polar.Argument),
+            };
+        }
+
         private static ComplexParts SplitComplex(string s, string SIGN)
         {
             string[] parts = s.Split(SIGN.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -385,7 +399,7 @@ namespace Oc6.Maths
             }
         }
 
-        private class ComplexParts
+        internal sealed class ComplexParts
         {
             public string Real { get; set; }
             public string Imaginary { get; set; }

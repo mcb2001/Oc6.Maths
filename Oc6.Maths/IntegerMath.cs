@@ -5,6 +5,302 @@ namespace Oc6.Maths
 {
     public static class IntegerMath
     {
+        public static BigInteger GreatestCommonDivisor(params BigInteger[] values)
+        {
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+            else if (values.Length == 0)
+            {
+                throw new ArgumentException("no arguments supplied", nameof(values));
+            }
+            else if (values.Length == 1)
+            {
+                return values[0];
+            }
+            else if (values.Length == 2)
+            {
+                return BigInteger.GreatestCommonDivisor(values[0], values[1]);
+            }
+            else
+            {
+                BigInteger gcd = GreatestCommonDivisor(values[0], values[1]);
+
+                for (int i = 2; i < values.Length; ++i)
+                {
+                    if (gcd == BigInteger.One)
+                    {
+                        return BigInteger.One;
+                    }
+                    else
+                    {
+                        gcd = GreatestCommonDivisor(gcd, values[i]);
+                    }
+                }
+
+                return gcd;
+            }
+        }
+
+        public static int GreatestCommonDivisor(params int[] values)
+        {
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+            else if (values.Length == 0)
+            {
+                throw new ArgumentException("no arguments supplied", nameof(values));
+            }
+            else if (values.Length == 1)
+            {
+                return values[0];
+            }
+            else if (values.Length == 2)
+            {
+                return GreatestCommonDivisor(values[0], values[1]);
+            }
+            else
+            {
+                int gcd = GreatestCommonDivisor(values[0], values[1]);
+
+                for (int i = 2; i < values.Length; ++i)
+                {
+                    if (gcd == 1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        gcd = GreatestCommonDivisor(gcd, values[i]);
+                    }
+                }
+
+                return gcd;
+            }
+        }
+
+        public static int GreatestCommonDivisor(int a, int b)
+        {
+            if (a < 0)
+            {
+                return GreatestCommonDivisor(-a, b);
+            }
+            else if (b < 0)
+            {
+                return GreatestCommonDivisor(a, -b);
+            }
+            else if (a == 0 && b == 0)
+            {
+                throw new ArgumentException("both cant be 0");
+            }
+            else if (a == 0 || b == 0)
+            {
+                return 1;
+            }
+            else if (a < b)
+            {
+                return GreatestCommonDivisor(b, a);
+            }
+            else
+            {
+                int c = a % b;
+
+                if (c == 0)
+                {
+                    return b;
+                }
+                else
+                {
+                    return GreatestCommonDivisor(b, c);
+                }
+            }
+        }
+
+        public static long GreatestCommonDivisor(params long[] values)
+        {
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+            else if (values.Length == 0)
+            {
+                throw new ArgumentException("no arguments supplied", nameof(values));
+            }
+            else if (values.Length == 1)
+            {
+                return values[0];
+            }
+            else if (values.Length == 2)
+            {
+                return GreatestCommonDivisor(values[0], values[1]);
+            }
+            else
+            {
+                long gcd = GreatestCommonDivisor(values[0], values[1]);
+
+                for (int i = 2; i < values.Length; ++i)
+                {
+                    if (gcd == 1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        gcd = GreatestCommonDivisor(gcd, values[i]);
+                    }
+                }
+
+                return gcd;
+            }
+        }
+
+        public static long GreatestCommonDivisor(long a, long b)
+        {
+            if (a < 0)
+            {
+                return GreatestCommonDivisor(-a, b);
+            }
+            else if (b < 0)
+            {
+                return GreatestCommonDivisor(a, -b);
+            }
+            else if (a == 0 && b == 0)
+            {
+                throw new ArgumentException("both cant be 0");
+            }
+            else if (a == 0 || b == 0)
+            {
+                return 1;
+            }
+            else if (a < b)
+            {
+                return GreatestCommonDivisor(b, a);
+            }
+            else
+            {
+                long c = a % b;
+
+                if (c == 0)
+                {
+                    return b;
+                }
+                else
+                {
+                    return GreatestCommonDivisor(b, c);
+                }
+            }
+        }
+
+        public static int LeastCommonMultiple(int a, int b)
+        {
+            return (a * b) / GreatestCommonDivisor(a, b);
+        }
+
+        public static long LeastCommonMultiple(long a, long b)
+        {
+            return (a * b) / GreatestCommonDivisor(a, b);
+        }
+
+        public static BigInteger LeastCommonMultiple(BigInteger a, BigInteger b)
+        {
+            return (a * b) / GreatestCommonDivisor(a, b);
+        }
+
+        public static int LeastCommonMultiple(params int[] values)
+        {
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+            else if (values.Length == 0)
+            {
+                throw new ArgumentException("no arguments supplied", nameof(values));
+            }
+            else if (values.Length == 1)
+            {
+                return values[0];
+            }
+            else if (values.Length == 2)
+            {
+                return LeastCommonMultiple(values[0], values[1]);
+            }
+            else
+            {
+                int lcm = LeastCommonMultiple(values[0], values[1]);
+
+                for (int i = 2; i < values.Length; ++i)
+                {
+                    lcm = LeastCommonMultiple(lcm, values[i]);
+                }
+
+                return lcm;
+            }
+        }
+
+        public static long LeastCommonMultiple(params long[] values)
+        {
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+            else if (values.Length == 0)
+            {
+                throw new ArgumentException("no arguments supplied", nameof(values));
+            }
+            else if (values.Length == 1)
+            {
+                return values[0];
+            }
+            else if (values.Length == 2)
+            {
+                return LeastCommonMultiple(values[0], values[1]);
+            }
+            else
+            {
+                long lcm = LeastCommonMultiple(values[0], values[1]);
+
+                for (int i = 2; i < values.Length; ++i)
+                {
+                    lcm = LeastCommonMultiple(lcm, values[i]);
+                }
+
+                return lcm;
+            }
+        }
+
+        public static BigInteger LeastCommonMultiple(params BigInteger[] values)
+        {
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+            else if (values.Length == 0)
+            {
+                throw new ArgumentException("no arguments supplied", nameof(values));
+            }
+            else if (values.Length == 1)
+            {
+                return values[0];
+            }
+            else if (values.Length == 2)
+            {
+                return LeastCommonMultiple(values[0], values[1]);
+            }
+            else
+            {
+                BigInteger lcm = LeastCommonMultiple(values[0], values[1]);
+
+                for (int i = 2; i < values.Length; ++i)
+                {
+                    lcm = LeastCommonMultiple(lcm, values[i]);
+                }
+
+                return lcm;
+            }
+        }
+
         public static sbyte Sqrt(sbyte input)
         {
             return (sbyte)SignedSqrtInternal(input);

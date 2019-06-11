@@ -22,7 +22,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Add()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = -2,
                 Imaginary = 10.6,
@@ -36,7 +36,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Subtract()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 4.4,
                 Imaginary = 5,
@@ -50,7 +50,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Multiply()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = -25.68,
                 Imaginary = -21.6,
@@ -64,13 +64,13 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Square()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = -1,
                 Imaginary = 0,
             };
 
-            var actual = new Complex
+            Complex actual = new Complex
             {
                 Real = 0,
                 Imaginary = 1,
@@ -81,9 +81,29 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
+        public void FromPolar()
+        {
+            Complex expected = new Complex
+            {
+                Real = 2.5,
+                Imaginary = 6.25,
+            };
+
+            PolarComplex polar = new PolarComplex
+            {
+                Argument = 1.1902899496825317,
+                Modulus = 6.73145600891813,
+            };
+
+            Complex actual = Complex.FromPolar(polar);
+            actual = ComplexMath.Round(actual, 5); // is actually: 2.5000000000000004+6.25i
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void Divide0()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 0.99557522123893794,
                 Imaginary = -1.566371681415929,
@@ -97,19 +117,19 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Divide1()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 9.0 / 58.0,
                 Imaginary = 37.0 / 58.0,
             };
 
-            var a = new Complex
+            Complex a = new Complex
             {
                 Real = 3.0,
                 Imaginary = 4.0,
             };
 
-            var b = new Complex
+            Complex b = new Complex
             {
                 Real = 7.0,
                 Imaginary = -3.0,
@@ -129,7 +149,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Equal()
         {
-            var c = new Complex
+            Complex c = new Complex
             {
                 Real = 1.2,
                 Imaginary = 7.8,
@@ -155,7 +175,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void EqualTo()
         {
-            var c = new Complex
+            Complex c = new Complex
             {
                 Real = 1.2,
                 Imaginary = 7.8,
@@ -173,7 +193,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Implicit_float()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 3.0,
                 Imaginary = 0.0,
@@ -187,7 +207,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Implicit_int()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 3.0,
                 Imaginary = 0.0,
@@ -215,7 +235,7 @@ namespace Oc6.Maths.UnitTests
             const string expected = "1,200.00-7,800.00i";
             const string format = "N";
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            var c = new Complex
+            Complex c = new Complex
             {
                 Real = 1200,
                 Imaginary = -7800,
@@ -228,7 +248,7 @@ namespace Oc6.Maths.UnitTests
         public void ToString_NaN()
         {
             const string expected = "NaN";
-            var c = new Complex
+            Complex c = new Complex
             {
                 Real = double.NaN,
                 Imaginary = 1,
@@ -241,7 +261,7 @@ namespace Oc6.Maths.UnitTests
         public void ToString_PositiveInfinity()
         {
             const string expected = "∞";
-            var c = new Complex
+            Complex c = new Complex
             {
                 Real = 1,
                 Imaginary = double.PositiveInfinity,
@@ -254,7 +274,7 @@ namespace Oc6.Maths.UnitTests
         public void ToString_NegativeInfinity()
         {
             const string expected = "-∞";
-            var c = new Complex
+            Complex c = new Complex
             {
                 Real = 1,
                 Imaginary = double.NegativeInfinity,
@@ -274,46 +294,46 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void Parse_Real()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 1234.56789101112,
                 Imaginary = 0,
             };
 
-            var actual = Complex.Parse(expected.ToString());
+            Complex actual = Complex.Parse(expected.ToString());
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Parse_Imaginary()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 0,
                 Imaginary = 1234.56789101112,
             };
 
-            var actual = Complex.Parse(expected.ToString());
+            Complex actual = Complex.Parse(expected.ToString());
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Parse()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = -1234.56789101112,
                 Imaginary = 1234.56789101112,
             };
 
-            var actual = Complex.Parse(expected.ToString());
+            Complex actual = Complex.Parse(expected.ToString());
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void TryParse_Real()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 1234.56789101112,
                 Imaginary = 0,
@@ -326,7 +346,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void TryParse_Imaginary()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = 0,
                 Imaginary = 1234.56789101112,
@@ -339,7 +359,7 @@ namespace Oc6.Maths.UnitTests
         [TestMethod]
         public void TryParse()
         {
-            var expected = new Complex
+            Complex expected = new Complex
             {
                 Real = -1234.56789101112,
                 Imaginary = 1234.56789101112,
