@@ -1,3 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "Chosen by design", Scope = "namespaceanddescendants", Target = "~M:Oc6.Maths")]
+[assembly: SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "<Pending>", Scope = "member", Target = "~M:Oc6.Maths.Util.StringFunctions.LongestCommonSubString(System.String,System.String)~System.String")]
+[assembly: SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "<Pending>", Scope = "member", Target = "~M:Oc6.Maths.Path.PathFinder.GetShortestPath(Oc6.Maths.Path.PathNode[,],System.Int32,System.Int32,System.Int32,System.Int32)~System.Collections.Generic.List{Oc6.Maths.Path.PathNode}")]
+[assembly: SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "<Pending>", Scope = "member", Target = "~M:Oc6.Maths.Path.PathFinder.Test(Oc6.Maths.Path.PathNode[,],System.Int32,System.Int32,System.Int32,System.Int32,Oc6.Maths.Path.PathNode,System.Collections.Generic.HashSet{Oc6.Maths.Path.PathNode},System.Int32,System.Int32)")]
