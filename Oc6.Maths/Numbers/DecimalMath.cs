@@ -129,7 +129,7 @@ namespace Oc6.Maths.Numbers
 
             try
             {
-                return NewtonRaphson.Iterate(x => Pow(x, (long)root) - value, x => root * Pow(x, (long)(root - 1)), rounding: null);
+                return NewtonRaphson.Iterate(x => Pow(x, root) - value, x => root * Pow(x, root - 1), rounding: null);
             }
             catch (IterationsExceededException<decimal> exc)
             {
