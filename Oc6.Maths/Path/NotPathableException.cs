@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Oc6.Maths.Path
 {
-    public class NotPathableException : Exception
+    [SuppressMessage("Design", "CA1032:Implement standard exception constructors", Justification = "<Only one true constructor>")]
+    public sealed class NotPathableException : Exception
     {
-        protected const string SOURCE_NAME = "Source";
-        protected const string SINK_NAME = "Sink";
+        private const string SourceName = "Source";
+        private const string SinkName = "Sink";
 
         private NotPathableException(string pathNodeName)
             : base($"{pathNodeName} is blocked, not path exists")
@@ -15,17 +17,17 @@ namespace Oc6.Maths.Path
 
         internal static NotPathableException SourceBlocked()
         {
-            return new NotPathableException(SOURCE_NAME);
+            return new NotPathableException(SourceName);
         }
 
         internal static NotPathableException SinkBlocked()
         {
-            return new NotPathableException(SINK_NAME);
+            return new NotPathableException(SinkName);
         }
 
         internal static NotPathableException NoPath()
         {
-            return new NotPathableException($"{SOURCE_NAME} or {SINK_NAME}");
+            return new NotPathableException($"{SourceName} or {SinkName}");
         }
     }
 }

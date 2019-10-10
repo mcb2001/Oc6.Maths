@@ -1,4 +1,5 @@
-﻿using Oc6.Maths.Util;
+﻿using Oc6.Maths.Resources;
+using Oc6.Maths.Util;
 using System;
 using System.Numerics;
 
@@ -14,7 +15,7 @@ namespace Oc6.Maths.Numbers
             }
             else if (values.Length == 0)
             {
-                throw new ArgumentException("no arguments supplied", nameof(values));
+                throw new ArgumentException(ErrorMessages.NoArguments, nameof(values));
             }
             else if (values.Length == 1)
             {
@@ -52,7 +53,7 @@ namespace Oc6.Maths.Numbers
             }
             else if (values.Length == 0)
             {
-                throw new ArgumentException("no arguments supplied", nameof(values));
+                throw new ArgumentException(ErrorMessages.NoArguments, nameof(values));
             }
             else if (values.Length == 1)
             {
@@ -94,7 +95,7 @@ namespace Oc6.Maths.Numbers
             }
             else if (a == 0 && b == 0)
             {
-                throw new ArgumentException("both cant be 0");
+                throw new ArgumentException(ErrorMessages.NeedsOneNonZeroValue);
             }
             else if (a == 0 || b == 0)
             {
@@ -127,7 +128,7 @@ namespace Oc6.Maths.Numbers
             }
             else if (values.Length == 0)
             {
-                throw new ArgumentException("no arguments supplied", nameof(values));
+                throw new ArgumentException(ErrorMessages.NoArguments, nameof(values));
             }
             else if (values.Length == 1)
             {
@@ -169,7 +170,7 @@ namespace Oc6.Maths.Numbers
             }
             else if (a == 0 && b == 0)
             {
-                throw new ArgumentException("both cant be 0");
+                throw new ArgumentException(ErrorMessages.NeedsOneNonZeroValue);
             }
             else if (a == 0 || b == 0)
             {
@@ -217,7 +218,7 @@ namespace Oc6.Maths.Numbers
             }
             else if (values.Length == 0)
             {
-                throw new ArgumentException("no arguments supplied", nameof(values));
+                throw new ArgumentException(ErrorMessages.NoArguments, nameof(values));
             }
             else if (values.Length == 1)
             {
@@ -248,7 +249,7 @@ namespace Oc6.Maths.Numbers
             }
             else if (values.Length == 0)
             {
-                throw new ArgumentException("no arguments supplied", nameof(values));
+                throw new ArgumentException(ErrorMessages.NoArguments, nameof(values));
             }
             else if (values.Length == 1)
             {
@@ -279,7 +280,7 @@ namespace Oc6.Maths.Numbers
             }
             else if (values.Length == 0)
             {
-                throw new ArgumentException("no arguments supplied", nameof(values));
+                throw new ArgumentException(ErrorMessages.NoArguments, nameof(values));
             }
             else if (values.Length == 1)
             {
@@ -311,7 +312,7 @@ namespace Oc6.Maths.Numbers
         {
             if (input < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(input), "Must be non-negative");
+                throw new ArgumentOutOfRangeException(nameof(input), ErrorMessages.MustBePositive);
             }
 
             return (byte)SqrtInternal(input);
@@ -351,7 +352,7 @@ namespace Oc6.Maths.Numbers
         {
             if (input < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(input), "Must be non-negative");
+                throw new ArgumentOutOfRangeException(nameof(input), ErrorMessages.MustBePositive);
             }
 
             if (input == 0)
@@ -438,7 +439,7 @@ namespace Oc6.Maths.Numbers
         {
             if (input < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(input), "Must be non-negative");
+                throw new ArgumentOutOfRangeException(nameof(input), ErrorMessages.MustBePositive);
             }
 
             return SqrtInternal((ulong)input);

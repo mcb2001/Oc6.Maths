@@ -9,6 +9,11 @@ namespace Oc6.Maths.Util
 
         public static void Shuffle<T>(this IList<T> list)
         {
+            if (list is null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
+
             for (int i = list.Count - 1; i > 0; --i)
             {
                 int j = _randomizer.Next(0, i + 1);

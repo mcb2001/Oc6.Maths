@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Oc6.Maths.Util
@@ -7,6 +8,11 @@ namespace Oc6.Maths.Util
     {
         public static IList<SecretSantaParticipant> Solve(IList<string> participantNames)
         {
+            if (participantNames == null)
+            {
+                throw new ArgumentNullException(nameof(participantNames));
+            }
+
             int[] listAre = Enumerable.Range(0, participantNames.Count).ToArray();
             listAre.Shuffle();
 
@@ -21,7 +27,7 @@ namespace Oc6.Maths.Util
 
             listFor[0] = listAre[i];
 
-            List<SecretSantaParticipant> list = new List<SecretSantaParticipant>(participantNames.Count);
+            var list = new List<SecretSantaParticipant>(participantNames.Count);
 
             for (i = 0; i < participantNames.Count; ++i)
             {

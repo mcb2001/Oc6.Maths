@@ -16,17 +16,17 @@ namespace Oc6.Maths.Util
                 throw new ArgumentNullException(nameof(right));
             }
 
-            if (left.CompareTo(right) == 0 || right.StartsWith(left) || right.EndsWith(left))
+            if (string.Compare(left, right, StringComparison.Ordinal) == 0 || right.StartsWith(left, StringComparison.Ordinal) || right.EndsWith(left, StringComparison.Ordinal))
             {
                 return left;
             }
 
-            if (left.StartsWith(right))
+            if (left.StartsWith(right, StringComparison.Ordinal))
             {
                 return right;
             }
 
-            if (left.EndsWith(right))
+            if (left.EndsWith(right, StringComparison.Ordinal))
             {
                 return right;
             }
@@ -53,8 +53,10 @@ namespace Oc6.Maths.Util
                         }
                         else
                         {
+                            //next
                             L[i, j] = L[i - 1, j - 1] + 1;
                         }
+
                         if (L[i, j] > z)
                         {
                             z = L[i, j];

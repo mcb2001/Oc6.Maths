@@ -5,13 +5,13 @@ namespace Oc6.Maths.Util
 {
     public static class NewtonRaphson
     {
-        public const int DEFAULT_ITERATIONS = 10000;
-        public const int DEFAULT_GUESS = 1;
-        public const int DEFAULT_ROUNDING = 14;
+        public const int DefaultIterations = 10000;
+        public const int DefaultGuess = 1;
+        public const int DefaultRounding = 14;
 
-        public static Complex Iterate(Func<Complex, Complex> fx, Func<Complex, Complex> dydx, Complex? guess = null, int? iterations = DEFAULT_ITERATIONS, int? rounding = DEFAULT_ROUNDING)
+        public static Complex Iterate(Func<Complex, Complex> fx, Func<Complex, Complex> dydx, Complex? guess = null, int? iterations = DefaultIterations, int? rounding = DefaultRounding)
         {
-            Complex x1 = guess ?? DEFAULT_GUESS, x0;
+            Complex x1 = guess ?? DefaultGuess, x0;
 
             for (int i = 1; i <= (iterations ?? i); ++i)
             {
@@ -32,7 +32,7 @@ namespace Oc6.Maths.Util
             throw new IterationsExceededException<Complex>(x1);
         }
 
-        public static decimal Iterate(Func<decimal, decimal> fx, Func<decimal, decimal> dydx, decimal guess = DEFAULT_GUESS, int? iterations = DEFAULT_ITERATIONS, int? rounding = DEFAULT_ROUNDING)
+        public static decimal Iterate(Func<decimal, decimal> fx, Func<decimal, decimal> dydx, decimal guess = DefaultGuess, int? iterations = DefaultIterations, int? rounding = DefaultRounding)
         {
             decimal x1 = guess, x0;
 
@@ -55,7 +55,7 @@ namespace Oc6.Maths.Util
             throw new IterationsExceededException<decimal>(x1);
         }
 
-        public static double Iterate(Func<double, double> fx, Func<double, double> dydx, double guess = DEFAULT_GUESS, int? iterations = DEFAULT_ITERATIONS, int? rounding = DEFAULT_ROUNDING)
+        public static double Iterate(Func<double, double> fx, Func<double, double> dydx, double guess = DefaultGuess, int? iterations = DefaultIterations, int? rounding = DefaultRounding)
         {
             double x1 = guess, x0;
 
@@ -78,7 +78,7 @@ namespace Oc6.Maths.Util
             throw new IterationsExceededException<double>(x1);
         }
 
-        public static BigInteger Iterate(Func<BigInteger, BigInteger> fx, Func<BigInteger, BigInteger> dydx, BigInteger? guess = null, int? iterations = DEFAULT_ITERATIONS)
+        public static BigInteger Iterate(Func<BigInteger, BigInteger> fx, Func<BigInteger, BigInteger> dydx, BigInteger? guess = null, int? iterations = DefaultIterations)
         {
             BigInteger x1 = guess ?? 1, x0;
 
@@ -96,7 +96,7 @@ namespace Oc6.Maths.Util
             throw new IterationsExceededException<BigInteger>(x1);
         }
 
-        public static float Iterate(Func<float, float> fx, Func<float, float> dydx, float guess = DEFAULT_GUESS, int? iterations = DEFAULT_ITERATIONS, int? rounding = DEFAULT_ROUNDING)
+        public static float Iterate(Func<float, float> fx, Func<float, float> dydx, float guess = DefaultGuess, int? iterations = DefaultIterations, int? rounding = DefaultRounding)
         {
             float x1 = guess, x0;
 
@@ -119,7 +119,7 @@ namespace Oc6.Maths.Util
             throw new IterationsExceededException<float>(x1);
         }
 
-        public static int Iterate(Func<int, int> fx, Func<int, int> dydx, int guess = DEFAULT_GUESS, int? iterations = DEFAULT_ITERATIONS)
+        public static int Iterate(Func<int, int> fx, Func<int, int> dydx, int guess = DefaultGuess, int? iterations = DefaultIterations)
         {
             int x1 = guess, x0;
 
@@ -137,7 +137,7 @@ namespace Oc6.Maths.Util
             throw new IterationsExceededException<int>(x1);
         }
 
-        public static long Iterate(Func<long, long> fx, Func<long, long> dydx, long guess = DEFAULT_GUESS, int? iterations = DEFAULT_ITERATIONS)
+        public static long Iterate(Func<long, long> fx, Func<long, long> dydx, long guess = DefaultGuess, int? iterations = DefaultIterations)
         {
             long x1 = guess, x0;
 

@@ -7,6 +7,11 @@ namespace Oc6.Maths.Path
     {
         public static List<PathNode> GetShortestPath(PathNode[,] field, int xSource, int ySource, int xSink, int ySink)
         {
+            if (field == null)
+            {
+                throw new ArgumentNullException(nameof(field));
+            }
+
             int width = field.GetLength(0);
             int height = field.GetLength(1);
 
@@ -17,7 +22,7 @@ namespace Oc6.Maths.Path
                 throw NotPathableException.SourceBlocked();
             }
 
-            HashSet<PathNode> openSet = new HashSet<PathNode> { start };
+            var openSet = new HashSet<PathNode> { start };
 
             start.GScore = 0;
             start.FScore = 0;
@@ -84,7 +89,7 @@ namespace Oc6.Maths.Path
 
         private static List<PathNode> ReconstructPath(PathNode field)
         {
-            List<PathNode> list = new List<PathNode>();
+            var list = new List<PathNode>();
 
             while (field.CameFrom != null)
             {

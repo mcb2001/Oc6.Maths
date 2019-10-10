@@ -8,11 +8,36 @@ namespace Oc6.Maths.UnitTests
     public sealed class DecimalMathsTests
     {
         [TestMethod]
-        public void Pow()
+        public void PowInt()
         {
             const decimal expected = 81.0M;
             decimal actual = 9.0M;
             actual = DecimalMath.Pow(actual, 2);
+            Assert.AreEqual<decimal>(expected, actual);
+        }
+
+        [TestMethod]
+        public void PowNegativeInt()
+        {
+            const decimal expected = 0.012345679012345679012345679M;
+            decimal actual = 9.0M;
+            actual = DecimalMath.Pow(actual, -2);
+            Assert.AreEqual<decimal>(expected, actual);
+        }
+
+        [TestMethod]
+        public void PowDecimal()
+        {
+            const decimal expected = 1.8587296919794811670420219951M;
+            decimal actual = DecimalMath.Pow(1.2M, 3.4M);
+            Assert.AreEqual<decimal>(expected, actual);
+        }
+
+        [TestMethod]
+        public void PowNegativeDecimal()
+        {
+            const decimal expected = 0.5380018430410047863745228634M;
+            decimal actual = DecimalMath.Pow(1.2M, -3.4M);
             Assert.AreEqual<decimal>(expected, actual);
         }
 

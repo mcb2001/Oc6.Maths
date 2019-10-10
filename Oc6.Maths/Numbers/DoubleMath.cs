@@ -1,4 +1,5 @@
-﻿using Oc6.Maths.Util;
+﻿using Oc6.Maths.Resources;
+using Oc6.Maths.Util;
 using System;
 
 namespace Oc6.Maths.Numbers
@@ -9,7 +10,7 @@ namespace Oc6.Maths.Numbers
         {
             if (IntegerMath.IsPowerOfTwo(root) && value < 0.0)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), "must be positive");
+                throw new ArgumentOutOfRangeException(nameof(value), ErrorMessages.MustBePositive);
             }
             else if (value == 0.0)
             {
