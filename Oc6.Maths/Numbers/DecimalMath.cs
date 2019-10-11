@@ -11,6 +11,13 @@ namespace Oc6.Maths.Numbers
         public const decimal PI = 3.141592653589793238462643383279M;
         public const decimal TAU = 6.283185307179586476925286766559M;
 
+        /// <summary>
+        /// <para>Calculates the value of a^b using the identity:</para>
+        /// <para>a^b = e^(ln(a)*b)</para>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static decimal Pow(decimal a, decimal b)
         {
             if (b == 0)
@@ -26,7 +33,7 @@ namespace Oc6.Maths.Numbers
             else if (b < long.MaxValue && b == Math.Round(b))
             {
                 //if it's an integer power, use the fast version
-                return Pow(a, (long)b);
+                return PowSquareLaw(a, (long)b);
             }
             else
             {
@@ -35,7 +42,26 @@ namespace Oc6.Maths.Numbers
             }
         }
 
-        private static decimal Pow(decimal a, long b)
+        public static decimal Pow(decimal a, long b)
+        {
+            if (b == 0)
+            {
+                //base case
+                return 1.0M;
+            }
+            else if (b < 0)
+            {
+                //less than 0 is just inverse
+                return 1.0M / Pow(a, -b);
+            }
+            else
+            {
+                //if it's an integer power, use the fast version
+                return PowSquareLaw(a, b);
+            }
+        }
+
+        private static decimal PowSquareLaw(decimal a, long b)
         {
             decimal t = 1;
 
@@ -93,16 +119,11 @@ namespace Oc6.Maths.Numbers
                 prev = result;
                 sign *= -1.0M;
                 num *= x;
-                decimal frac = (sign * num) / den;
+                decimal frac = sign * num / den;
                 result += frac;
             }
 
             return result;
-        }
-
-        private static decimal Pow(decimal a, int b)
-        {
-            return Pow(a, (long)b);
         }
 
         public static decimal Sqrt(decimal value)
@@ -123,7 +144,7 @@ namespace Oc6.Maths.Numbers
 
             try
             {
-                return NewtonRaphson.Iterate(x => Pow(x, (long)root) - value, x => root * Pow(x, (long)(root - 1)), rounding: null);
+                return NewtonRaphson.Iterate(x => PowSquareLaw(x, root) - value, x => root * PowSquareLaw(x, root - 1), rounding: null);
             }
             catch (IterationsExceededException<decimal> exc)
             {
