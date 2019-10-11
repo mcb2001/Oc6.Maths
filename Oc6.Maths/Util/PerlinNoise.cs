@@ -44,12 +44,12 @@ namespace Oc6.Maths.Util
 
         private static double Fade(double t)
         {
-            return t * t * t * (t * (t * 6 - 15) + 10);
+            return t * t * t * ((t * ((t * 6) - 15)) + 10);
         }
 
         private static double Lerp(double t, double a, double b)
         {
-            return a + t * (b - a);
+            return a + (t * (b - a));
         }
 
         private static double Grad(int hash, double x, double y, double z)

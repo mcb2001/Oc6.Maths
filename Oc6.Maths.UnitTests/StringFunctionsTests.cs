@@ -8,19 +8,19 @@ namespace Oc6.Maths.UnitTests
     public class StringFunctionsTests
     {
         [TestMethod]
-        public void LongestCommonSubString_Null_Any()
+        public void LongestCommonSubStringNullAny()
         {
             Assert.ThrowsException<ArgumentNullException>(() => StringFunctions.LongestCommonSubString(null, "any"));
         }
 
         [TestMethod]
-        public void LongestCommonSubString_Any_Null()
+        public void LongestCommonSubStringAnyNull()
         {
             Assert.ThrowsException<ArgumentNullException>(() => StringFunctions.LongestCommonSubString("any", null));
         }
 
         [TestMethod]
-        public void LongestCommonSubString_StartsWith0()
+        public void LongestCommonSubStringStartsWith0()
         {
             string a = "aaaabbbbb";
             string b = "aaaa";
@@ -30,7 +30,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void LongestCommonSubString_StartsWith1()
+        public void LongestCommonSubStringStartsWith1()
         {
             string a = "aaaabbbbb";
             string b = "aaaa";
@@ -40,7 +40,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void LongestCommonSubString_EndsWith0()
+        public void LongestCommonSubStringEndsWith0()
         {
             string a = "aaaabbbb";
             string b = "bbbb";
@@ -50,7 +50,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void LongestCommonSubString_EndsWith1()
+        public void LongestCommonSubStringEndsWith1()
         {
             string a = "aaaabbbb";
             string b = "bbbb";
@@ -60,7 +60,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void LongestCommonSubString_Self()
+        public void LongestCommonSubStringSelf()
         {
             string a = "aaaabbbb";
             string expected = a;

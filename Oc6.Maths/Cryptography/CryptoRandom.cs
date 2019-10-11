@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 
 namespace Oc6.Maths.Cryptography
@@ -8,41 +7,62 @@ namespace Oc6.Maths.Cryptography
     public sealed class CryptoRandom : IDisposable
     {
         private readonly RandomNumberGenerator randomNumberGenerator;
-        private readonly BinaryFormatter formatter = new BinaryFormatter();
+        private readonly bool doNotDispose;
 
         public CryptoRandom()
         {
             randomNumberGenerator = RandomNumberGenerator.Create();
+            doNotDispose = false;
         }
 
-        public CryptoRandom(RandomNumberGenerator randomNumberGenerator)
+        public CryptoRandom(RandomNumberGenerator randomNumberGenerator, bool doNotDispose = false)
         {
             this.randomNumberGenerator = randomNumberGenerator;
+            this.doNotDispose = doNotDispose;
         }
 
-        public T Next<T>()
+        public bool TryNext<T>(out T t)
             where T : struct
         {
-            return NextInternal<T>();
+            return TryNextInternal(out t);
         }
 
-        private unsafe T NextInternal<T>()
+        private unsafe bool TryNextInternal<T>(out T t)
         {
-            byte[] buffer = new byte[Marshal.SizeOf<T>()];
+            t = default;
 
-            randomNumberGenerator.GetBytes(buffer);
-
-            fixed (byte* packet = buffer)
+            try
             {
-                var intPtr = new IntPtr(packet);
-                return Marshal.PtrToStructure<T>(intPtr);
+                byte[] buffer = new byte[Marshal.SizeOf<T>()];
+
+                randomNumberGenerator.GetBytes(buffer);
+
+                fixed (byte* packet = buffer)
+                {
+                    var intPtr = new IntPtr(packet);
+                    t = Marshal.PtrToStructure<T>(intPtr);
+                    return true;
+                }
             }
+            catch (MissingMethodException)
+            {
+
+            }
+            catch (ArgumentException)
+            {
+            }
+
+            return false;
         }
 
         public void Dispose()
         {
             GC.SuppressFinalize(this);
-            randomNumberGenerator?.Dispose();
+
+            if (!doNotDispose)
+            {
+                randomNumberGenerator?.Dispose();
+            }
         }
 
         ~CryptoRandom()

@@ -8,7 +8,7 @@ namespace Oc6.Maths.UnitTests
     public class NewtonRaphsonTests
     {
         [TestMethod]
-        public void Iterate_IterationsExceededException()
+        public void IterateIterationsExceededException()
         {
             Func<double, double> fx = x => Math.Pow(x, 8) - 100.0;
             Func<double, double> dydx = x => 8 * Math.Pow(x, 7);

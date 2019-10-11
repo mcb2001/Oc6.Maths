@@ -9,7 +9,7 @@ namespace Oc6.Maths.UnitTests
     public sealed class IntegerMathTests
     {
         [TestMethod]
-        public void GreatestCommonDivisor_Int()
+        public void GreatestCommonDivisorInt()
         {
             int a = 2 * 3 * 5 * 7;
             int b = 3 * 5 * 7;
@@ -20,7 +20,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void GreatestCommonDivisor_BigInteger()
+        public void GreatestCommonDivisorBigInteger()
         {
             BigInteger a = 2 * 3 * 5 * 7;
             BigInteger b = 3 * 5 * 7;
@@ -31,7 +31,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void LeastCommonMultiple_Long()
+        public void LeastCommonMultipleLong()
         {
             long a = 2 * 3 * 5 * 7;
             long b = 3 * 5 * 11;
@@ -42,7 +42,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void LeastCommonMultiple_BigInteger()
+        public void LeastCommonMultipleBigInteger()
         {
             BigInteger a = 2 * 3 * 5 * 7;
             BigInteger b = 3 * 5 * 11;
@@ -53,7 +53,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Zero_Int()
+        public void SqrtZeroInt()
         {
             int actual = IntegerMath.Sqrt(0);
             int expected = 0;
@@ -61,7 +61,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_One_Int()
+        public void SqrtOneInt()
         {
             int actual = IntegerMath.Sqrt(1);
             int expected = 1;
@@ -69,7 +69,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Two_Int()
+        public void SqrtTwoInt()
         {
             int actual = IntegerMath.Sqrt(2);
             int expected = 1;
@@ -77,7 +77,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Four_Int()
+        public void SqrtFourInt()
         {
             int actual = IntegerMath.Sqrt(4);
             int expected = 2;
@@ -85,7 +85,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Nine_Int()
+        public void SqrtNineInt()
         {
             int actual = IntegerMath.Sqrt(9);
             int expected = 3;
@@ -93,7 +93,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_16_Int()
+        public void Sqrt16Int()
         {
             int actual = IntegerMath.Sqrt(16);
             int expected = 4;
@@ -101,7 +101,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_16_Short()
+        public void Sqrt16Short()
         {
             short value = 16;
             short actual = IntegerMath.Sqrt(value);
@@ -110,7 +110,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_16_Sbyte()
+        public void Sqrt16Sbyte()
         {
             sbyte value = 16;
             sbyte actual = IntegerMath.Sqrt(value);
@@ -119,7 +119,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_16_Ulong()
+        public void Sqrt16Ulong()
         {
             ulong value = 16;
             ulong actual = IntegerMath.Sqrt(value);
@@ -128,7 +128,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Max_Int()
+        public void SqrtMaxInt()
         {
             int actual = IntegerMath.Sqrt(int.MaxValue);
             int expected = 46340;
@@ -136,13 +136,13 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Exception_Int()
+        public void SqrtExceptionInt()
         {
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => IntegerMath.Sqrt(-1));
         }
 
         [TestMethod]
-        public void Sqrt_Zero_Long()
+        public void SqrtZeroLong()
         {
             long actual = IntegerMath.Sqrt(0L);
             long expected = 0L;
@@ -150,7 +150,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_One_Long()
+        public void SqrtOneLong()
         {
             long actual = IntegerMath.Sqrt(1L);
             long expected = 1L;
@@ -158,7 +158,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Two_Long()
+        public void SqrtTwoLong()
         {
             long actual = IntegerMath.Sqrt(2L);
             long expected = 1L;
@@ -166,7 +166,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Four_Long()
+        public void SqrtFourLong()
         {
             long actual = IntegerMath.Sqrt(4L);
             long expected = 2L;
@@ -174,7 +174,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Nine_Long()
+        public void SqrtNineLong()
         {
             long actual = IntegerMath.Sqrt(9L);
             long expected = 3L;
@@ -182,7 +182,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_16_Long()
+        public void Sqrt16Long()
         {
             long actual = IntegerMath.Sqrt(16L);
             long expected = 4L;
@@ -190,7 +190,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_16_BigInteger()
+        public void Sqrt16BigInteger()
         {
             BigInteger actual = 16;
             actual = IntegerMath.Sqrt(actual);
@@ -199,7 +199,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_10_BigInteger()
+        public void Sqrt10BigInteger()
         {
             BigInteger actual = 10;
             actual = IntegerMath.Sqrt(actual);
@@ -208,7 +208,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Large_BigInteger0()
+        public void SqrtLargeBigInteger0()
         {
             BigInteger actual = long.MaxValue;
             actual = IntegerMath.Sqrt(actual * actual);
@@ -217,16 +217,16 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Large_BigInteger1()
+        public void SqrtLargeBigInteger1()
         {
             BigInteger actual = long.MaxValue;
-            actual = IntegerMath.Sqrt(actual * actual + 27);
+            actual = IntegerMath.Sqrt((actual * actual) + 27);
             BigInteger expected = long.MaxValue;
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void Sqrt_Mid_Low_Long()
+        public void SqrtMidLowLong()
         {
             long actual = IntegerMath.Sqrt(3037000498L);
             long expected = 55108L;
@@ -234,7 +234,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Mid_High_Long()
+        public void SqrtMidHighLong()
         {
             long actual = IntegerMath.Sqrt(3037000499L);
             long expected = 55108L;
@@ -242,7 +242,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Max_Long()
+        public void SqrtMaxLong()
         {
             long actual = IntegerMath.Sqrt(long.MaxValue);
             long expected = 3037000499L;
@@ -250,7 +250,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Max_Ulong()
+        public void SqrtMaxUlong()
         {
             ulong actual = IntegerMath.Sqrt(ulong.MaxValue);
             ulong expected = 4294967295;
@@ -258,48 +258,48 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sqrt_Exception_Long()
+        public void SqrtExceptionLong()
         {
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => IntegerMath.Sqrt(-1L));
         }
 
         [TestMethod]
-        public void IsPowerOfTwo_True_16_Byte()
+        public void IsPowerOfTwoTrue16Byte()
         {
             byte b = 16;
             Assert.IsTrue(IntegerMath.IsPowerOfTwo(b));
         }
 
         [TestMethod]
-        public void IsPowerOfTwo_False_0_Uint()
+        public void IsPowerOfTwoFalse0Uint()
         {
             uint u = 0;
             Assert.IsFalse(IntegerMath.IsPowerOfTwo(u));
         }
 
         [TestMethod]
-        public void IsPowerOfTwo_True_1_Int()
+        public void IsPowerOfTwoTrue1Int()
         {
             int i = 1;
             Assert.IsTrue(IntegerMath.IsPowerOfTwo(i));
         }
 
         [TestMethod]
-        public void IsPowerOfTwo_False_3_Short()
+        public void IsPowerOfTwoFalse3Short()
         {
             short s = 3;
             Assert.IsFalse(IntegerMath.IsPowerOfTwo(s));
         }
 
         [TestMethod]
-        public void IsPowerOfTwo_False_127_Sbyte()
+        public void IsPowerOfTwoFalse127Sbyte()
         {
             sbyte s = 127;
             Assert.IsFalse(IntegerMath.IsPowerOfTwo(s));
         }
 
         [TestMethod]
-        public void IsPowerOfTwo_True_Large_Long()
+        public void IsPowerOfTwoTrueLargeLong()
         {
             long l = int.MaxValue;
             ++l;
@@ -307,14 +307,14 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void IsPowerOfTwo_False_MAX_ulong()
+        public void IsPowerOfTwoFalseMAXulong()
         {
             ulong u = ulong.MaxValue;
             Assert.IsFalse(IntegerMath.IsPowerOfTwo(u));
         }
 
         [TestMethod]
-        public void IsPowerOfTwo_True_Loop()
+        public void IsPowerOfTwoTrueLoop()
         {
             ulong u = 1;
 

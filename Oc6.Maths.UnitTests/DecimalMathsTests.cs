@@ -60,7 +60,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Cos_Zero()
+        public void CosZero()
         {
             decimal expected = 0.0M;
             decimal actual = DecimalMath.PI / 2.0M;
@@ -69,7 +69,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Cos_Negative()
+        public void CosNegative()
         {
             decimal expected = -1.0M;
             decimal actual = DecimalMath.PI;
@@ -78,7 +78,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sin_One()
+        public void SinOne()
         {
             decimal expected = 1.0M;
             decimal actual = DecimalMath.PI / 2.0M;
@@ -87,7 +87,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Sin_Zero()
+        public void SinZero()
         {
             decimal expected = 0.0M;
             decimal actual = DecimalMath.PI;
@@ -96,7 +96,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Tan_Sqrt3()
+        public void TanSqrt3()
         {
             const decimal THREE = 3.0M;
             decimal expected = DecimalMath.Sqrt(THREE);
@@ -110,7 +110,7 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Tan_Exception()
+        public void TanException()
         {
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => DecimalMath.Tan(DecimalMath.PI / 2));
         }

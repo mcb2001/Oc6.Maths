@@ -37,21 +37,21 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void PresentValue_Start()
+        public void PresentValueStart()
         {
             decimal actual = LoanFunctions.PresentValue(rate, periods, 0, monthlyPayment, futureValue, type);
             Assert.AreEqual(presentValue, actual);
         }
 
         [TestMethod]
-        public void PresentValue_Mid()
+        public void PresentValueMid()
         {
             decimal actual = LoanFunctions.PresentValue(rate, periods, 42, monthlyPayment, futureValue, type);
             Assert.AreEqual(midValue, actual);
         }
 
         [TestMethod]
-        public void PresentValue_End()
+        public void PresentValueEnd()
         {
             decimal actual = LoanFunctions.PresentValue(rate, periods, periods, monthlyPayment, futureValue, type);
             Assert.AreEqual(futureValue, actual);

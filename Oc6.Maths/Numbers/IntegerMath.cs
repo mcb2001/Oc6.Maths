@@ -109,14 +109,7 @@ namespace Oc6.Maths.Numbers
             {
                 int c = a % b;
 
-                if (c == 0)
-                {
-                    return b;
-                }
-                else
-                {
-                    return GreatestCommonDivisor(b, c);
-                }
+                return c == 0 ? b : GreatestCommonDivisor(b, c);
             }
         }
 
@@ -184,30 +177,23 @@ namespace Oc6.Maths.Numbers
             {
                 long c = a % b;
 
-                if (c == 0)
-                {
-                    return b;
-                }
-                else
-                {
-                    return GreatestCommonDivisor(b, c);
-                }
+                return c == 0 ? b : GreatestCommonDivisor(b, c);
             }
         }
 
         public static int LeastCommonMultiple(int a, int b)
         {
-            return (a * b) / GreatestCommonDivisor(a, b);
+            return a * b / GreatestCommonDivisor(a, b);
         }
 
         public static long LeastCommonMultiple(long a, long b)
         {
-            return (a * b) / GreatestCommonDivisor(a, b);
+            return a * b / GreatestCommonDivisor(a, b);
         }
 
         public static BigInteger LeastCommonMultiple(BigInteger a, BigInteger b)
         {
-            return (a * b) / GreatestCommonDivisor(a, b);
+            return a * b / GreatestCommonDivisor(a, b);
         }
 
         public static int LeastCommonMultiple(params int[] values)

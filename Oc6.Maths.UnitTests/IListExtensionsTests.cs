@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oc6.Maths.Util;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Oc6.Maths.UnitTests
@@ -9,7 +8,7 @@ namespace Oc6.Maths.UnitTests
     public class IListExtensionsTests
     {
         [TestMethod]
-        public void Shuffle_Array()
+        public void ShuffleArray()
         {
             int[] a = Enumerable.Range(0, 100).ToArray();
             int[] b = Enumerable.Range(0, 100).ToArray();
@@ -28,10 +27,10 @@ namespace Oc6.Maths.UnitTests
         }
 
         [TestMethod]
-        public void Shuffle_List()
+        public void ShuffleList()
         {
-            List<int> a = Enumerable.Range(0, 100).ToList();
-            List<int> b = Enumerable.Range(0, 100).ToList();
+            var a = Enumerable.Range(0, 100).ToList();
+            var b = Enumerable.Range(0, 100).ToList();
 
             a.Shuffle();
             b.Shuffle();

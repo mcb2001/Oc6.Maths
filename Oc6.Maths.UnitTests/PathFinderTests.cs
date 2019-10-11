@@ -2,6 +2,7 @@
 using Oc6.Maths.Path;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Oc6.Maths.UnitTests
@@ -13,16 +14,17 @@ namespace Oc6.Maths.UnitTests
         private static readonly Random Randomizer = new Random();
 
         [TestMethod]
-        public void GetShortestPath_Random()
+        public void GetShortestPathRandom()
         {
             Enumerable.Range(0, 500)
                 .AsParallel()
                 .ForAll(x => TestPath());
         }
 
+        [SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "By design")]
         private static void TestPath()
         {
-            PathNode[,] nodes = new PathNode[SIZE, SIZE];
+            var nodes = new PathNode[SIZE, SIZE];
 
             for (int x = 0; x < SIZE; ++x)
             {

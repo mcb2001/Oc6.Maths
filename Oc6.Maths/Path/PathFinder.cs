@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Oc6.Maths.Path
 {
     public static class PathFinder
     {
+        [SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "By design")]
         public static List<PathNode> GetShortestPath(PathNode[,] field, int xSource, int ySource, int xSink, int ySink)
         {
             if (field == null)
@@ -60,6 +62,7 @@ namespace Oc6.Maths.Path
             throw NotPathableException.NoPath();
         }
 
+        [SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "By design")]
         private static void Test(PathNode[,] field, int x, int y, int width, int height, PathNode cameFrom, HashSet<PathNode> openSet, int xSink, int ySink)
         {
             if (x < 0 || x == width || y < 0 || y == height)

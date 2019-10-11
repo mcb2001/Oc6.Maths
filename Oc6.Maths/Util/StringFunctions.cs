@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Oc6.Maths.Util
 {
     public static class StringFunctions
     {
+        [SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "By design")]
         public static string LongestCommonSubString(string left, string right)
         {
             if (left is null)
