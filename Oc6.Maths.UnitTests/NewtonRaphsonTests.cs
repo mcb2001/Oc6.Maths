@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oc6.Maths.Util;
 using System;
+using System.Numerics;
 
 namespace Oc6.Maths.UnitTests
 {
@@ -23,6 +24,44 @@ namespace Oc6.Maths.UnitTests
             double actual = NewtonRaphson.Iterate(fx, dydx);
             double expected = 1.77827941003892;
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void IterateComplexReal()
+        {
+            Func<Complex, Complex> fx = x => Complex.Pow(x, 2) - 4;
+            Func<Complex, Complex> dydx = x => 2 * x;
+
+            var expected = Complex.Sqrt(4);
+
+            Complex actual = Iterate(fx, dydx);
+
+            Assert.AreEqual<Complex>(expected, actual);
+        }
+
+        private static Complex Iterate(Func<Complex, Complex> fx, Func<Complex, Complex> dydx, Complex? guess = null)
+        {
+            try
+            {
+                return guess.HasValue ? NewtonRaphson.Iterate(fx, dydx, guess) : NewtonRaphson.Iterate(fx, dydx);
+            }
+            catch (IterationsExceededException<Complex> exc)
+            {
+                return exc.LastValue;
+            }
+        }
+
+        [TestMethod]
+        public void IterateComplexImaginary()
+        {
+            Func<Complex, Complex> fx = x => Complex.Pow(x, 2) + 4;
+            Func<Complex, Complex> dydx = x => 2 * x;
+
+            var expected = Complex.Sqrt(-4);
+
+            Complex actual = Iterate(fx, dydx, new Complex(0, 4));
+
+            Assert.AreEqual<Complex>(expected, actual);
         }
     }
 }

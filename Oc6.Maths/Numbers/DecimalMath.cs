@@ -46,11 +46,9 @@ namespace Oc6.Maths.Numbers
                 //if it's an integer power, use the fast version
                 return PowSquareLaw(a, (long)b);
             }
-            else
-            {
-                //use the long version
-                return Exp(Log(a) * b);
-            }
+
+            //use the long version
+            return Exp(Log(a) * b);
         }
 
         public static decimal Pow(decimal a, long b)
@@ -142,7 +140,7 @@ namespace Oc6.Maths.Numbers
             return Root(value, 2);
         }
 
-        public static decimal Root(decimal value, int root)
+        public static decimal Root(decimal value, long root)
         {
             if (IntegerMath.IsPowerOfTwo(root) && value < 0.0M)
             {
