@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Oc6.Maths.Numbers
@@ -255,7 +256,7 @@ namespace Oc6.Maths.Numbers
             return Plus(a);
         }
 
-        private static Fraction Plus(Fraction a)
+        public static Fraction Plus(Fraction a)
         {
             a = Normalize(a);
 
@@ -270,7 +271,7 @@ namespace Oc6.Maths.Numbers
             return Add(a, b);
         }
 
-        private static Fraction Add(Fraction a, Fraction b)
+        public static Fraction Add(Fraction a, Fraction b)
         {
             return new Fraction((a.Numerator * b.Denominator) + (b.Numerator * a.Denominator), a.Denominator * b.Denominator);
         }
@@ -280,7 +281,7 @@ namespace Oc6.Maths.Numbers
             return Subtract(a, b);
         }
 
-        private static Fraction Subtract(Fraction a, Fraction b)
+        public static Fraction Subtract(Fraction a, Fraction b)
         {
             return new Fraction((a.Numerator * b.Denominator) - (b.Numerator * a.Denominator), a.Denominator * b.Denominator);
         }
@@ -290,7 +291,7 @@ namespace Oc6.Maths.Numbers
             return Multiply(a, b);
         }
 
-        private static Fraction Multiply(Fraction a, Fraction b)
+        public static Fraction Multiply(Fraction a, Fraction b)
         {
             return new Fraction(a.Numerator * b.Numerator, a.Denominator * b.Denominator);
         }
@@ -300,7 +301,7 @@ namespace Oc6.Maths.Numbers
             return Divide(a, b);
         }
 
-        private static Fraction Divide(Fraction a, Fraction b)
+        public static Fraction Divide(Fraction a, Fraction b)
         {
             return new Fraction(a.Numerator * b.Denominator, a.Denominator * b.Numerator);
         }
@@ -358,6 +359,7 @@ namespace Oc6.Maths.Numbers
             return TryParse(value, out frac, style: default, provider);
         }
 
+        [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Try/Catch used to actually be a TryParse pattern")]
         public static bool TryParse(string value, out Fraction frac, NumberStyles style, IFormatProvider provider)
         {
             if (value != null)
@@ -369,19 +371,15 @@ namespace Oc6.Maths.Numbers
                 }
                 catch (ArgumentNullException)
                 {
-
                 }
                 catch (FormatException)
                 {
-
                 }
                 catch (OverflowException)
                 {
-
                 }
                 catch (ArgumentException)
                 {
-
                 }
             }
 

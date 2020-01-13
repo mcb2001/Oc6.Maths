@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
@@ -27,6 +28,7 @@ namespace Oc6.Maths.Cryptography
             return TryNextInternal(out t);
         }
 
+        [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Try/Catch used to actually be a TryParse pattern")]
         private unsafe bool TryNextInternal<T>(out T t)
         {
             t = default;
